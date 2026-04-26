@@ -18,7 +18,8 @@
         .advantages { background: #e3f2fd; color: #0d47a1; border: 1px solid #bbdefb; }
         .rules { background: #fff3e0; color: #e65100; border: 1px solid #ffe0b2; }
         .prog { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
-        button { background: var(--primary); color: white; border: none; padding: 18px; border-radius: 50px; font-size: 16px; font-weight: bold; cursor: pointer; width: 100%; transition: 0.3s; margin-top: 10px; }
+        .payment { background: #fff4e5; color: #ff8c00; border: 1px solid #ffcc80; padding: 15px; border-radius: 8px; font-size: 13px; margin-top: 10px; }
+        button { background: var(--primary); color: white; border: none; padding: 18px; border-radius: 50px; font-size: 16px; font-weight: bold; cursor: pointer; width: 100%; transition: 0.3s; margin-top: 15px; }
         .dispo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
     </style>
 </head>
@@ -83,144 +84,26 @@
 
         <label>Vos Disponibilités *</label>
         <div class="dispo-grid">
-            <select id="hour_range">
-                <option value="08h - 12h">08h - 12h</option>
-                <option value="12h - 15h">12h - 15h</option>
-                <option value="15h - 18h">15h - 18h</option>
-                <option value="Après 18h">Après 18h</option>
-                <option value="Week-end">Week-end</option>
-            </select>
-            <input type="text" id="days" placeholder="Jours (Ex: Lun, Mer, Ven)">
+            <div>
+                <label style="font-size:11px;">Tranche Horaire :</label>
+                <select id="hour_range">
+                    <option value="08h - 12h">08h - 12h</option>
+                    <option value="12h - 15h">12h - 15h</option>
+                    <option value="15h - 18h">15h - 18h</option>
+                    <option value="Après 18h">Après 18h</option>
+                    <option value="Week-end">Week-end</option>
+                </select>
+            </div>
+            <div>
+                <label style="font-size:11px;">Jours (écrivez-les vous-même) :</label>
+                <input type="text" id="days" placeholder="Ex: Lundi, Mercredi, Samedi">
+            </div>
         </div>
-    </div>
 
-    <div class="section" style="border:none;">
-        <button onclick="send()">VALIDER MON INSCRIPTION</button>
-    </div>
-</div>
-
-<script>
-    function send() {
-        const name = document.getElementById('name').value;
-        const level = document.getElementById('level').value;
-        let field = document.getElementById('field').value;
-        if(field === 'Autre') field = document.getElementById('other_field').value;
-        const goals = document.getElementById('goals').value;
-        const hour = document.getElementById('hour_range').value;
-        const days = document.getElementById('days').value;
-
-        if(!name || !field || !goals || !days) {
-            alert("Merci de remplir tous les champs.");
-            return;
-        }
-
-        const phone = "2250747492870";
-        const msg = `*INSCRIPTION EFA ACADEMY*%0A%0A` +
-                    `*Nom:* ${name}%0A` +
-                    `*Niveau:* ${level}%0A` +
-                    `*Filière/Job:* ${field}%0A` +
-                    `*Objectifs:* ${goals}%0A` +
-                    `*Heures:* ${hour}%0A` +
-                    `*Jours:* ${days}%0A%0A` +
-                    `*Engagement:* Lu et approuvé (Zéro Drague).`;
-
-        window.location.href = `https://wa.me/${phone}?text=${msg}`;
-    }
-</script>
-</body>
-</html><!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>English For All Academy | Inscription Officielle</title>
-    <style>
-        :root { --primary: #003366; --accent: #d4af37; --bg: #f4f7f9; }
-        body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg); margin: 0; padding: 20px; display: flex; justify-content: center; }
-        .form-card { background: white; max-width: 600px; width: 100%; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.15); overflow: hidden; border-top: 12px solid var(--primary); }
-        .header { padding: 30px; text-align: center; background: #fff; }
-        .header h1 { color: var(--primary); margin: 0; font-size: 24px; text-transform: uppercase; }
-        .section { padding: 20px 30px; border-bottom: 1px solid #eee; }
-        .section-title { color: var(--primary); font-weight: bold; font-size: 14px; margin-bottom: 15px; text-transform: uppercase; border-left: 4px solid var(--accent); padding-left: 10px; display: block; }
-        label { display: block; margin-bottom: 5px; font-weight: 600; font-size: 14px; color: #444; }
-        input, select, textarea { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box; font-size: 15px; }
-        .info-box { font-size: 13px; padding: 15px; border-radius: 8px; margin-bottom: 15px; line-height: 1.6; }
-        .advantages { background: #e3f2fd; color: #0d47a1; border: 1px solid #bbdefb; }
-        .rules { background: #fff3e0; color: #e65100; border: 1px solid #ffe0b2; }
-        .prog { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
-        button { background: var(--primary); color: white; border: none; padding: 18px; border-radius: 50px; font-size: 16px; font-weight: bold; cursor: pointer; width: 100%; transition: 0.3s; margin-top: 10px; }
-        .dispo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-    </style>
-</head>
-<body>
-<div class="form-card">
-    <div class="header">
-        <h1>ENGLISH FOR ALL ACADEMY</h1>
-        <p style="color:var(--accent); font-weight:bold; margin:5px 0 0 0;">Agence Spécialisée en Immersion Linguistique</p>
-    </div>
-
-    <div class="section">
-        <div class="info-box advantages">
-            <strong>🚀 VOS AVANTAGES EFA :</strong><br>
-            • Immersion totale & Expressions liées à votre métier.<br>
-            • Sessions d'oral avec des <strong>Natifs</strong> (après 1 mois de test).<br>
-            • Coaching spécialisé par filière.
-        </div>
-        <div class="info-box prog">
-            <strong>📅 NOTRE PROGRAMME :</strong><br>
-            • Séance 1 : Exercices d'apprentissage.<br>
-            • Séance 2 : Correction détaillée.<br>
-            • Séance 3 : Pratique orale intensive.
-        </div>
-        <div class="info-box rules">
-            <strong>⚠️ RÈGLEMENT (Strict) :</strong><br>
-            • 🚫 <strong>Zéro Tolérance Drague :</strong> Exclusion immédiate en cas d'abus.<br>
-            • 🤝 <strong>Respect & Assiduité :</strong> Obligatoires.
-        </div>
-    </div>
-
-    <div class="section">
-        <span class="section-title">Votre Profil</span>
-        <label>Nom et Prénoms *</label>
-        <input type="text" id="name" placeholder="Ex: Christian Kouassi">
-
-        <label>Niveau actuel en anglais *</label>
-        <select id="level">
-            <option value="A1 - Débutant">A1 - Débutant</option>
-            <option value="A2 - Élémentaire">A2 - Élémentaire</option>
-            <option value="B1 - Intermédiaire">B1 - Intermédiaire</option>
-            <option value="B2 - Avancé">B2 - Avancé</option>
-        </select>
-
-        <label>Votre Filière *</label>
-        <select id="field" onchange="document.getElementById('other-box').style.display = (this.value === 'Autre') ? 'block' : 'none'">
-            <option value="IGL">IGL (Informatique)</option>
-            <option value="Communication">Communication</option>
-            <option value="Sciences Économiques">Sciences Économiques</option>
-            <option value="Droit">Droit</option>
-            <option value="Autre">Autre (Précisez votre métier)</option>
-        </select>
-        <div id="other-box" style="display:none;">
-            <label>Précisez votre Profession / Promotion *</label>
-            <input type="text" id="other_field" placeholder="Ex: RH, Commercial, etc.">
-        </div>
-    </div>
-
-    <div class="section">
-        <span class="section-title">Objectifs & Planning</span>
-        <label>Quels sont vos objectifs ? *</label>
-        <textarea id="goals" rows="2" placeholder="Ex: Parler couramment pour mon travail..."></textarea>
-
-        <label>Vos Disponibilités *</label>
-        <div class="dispo-grid">
-            <select id="hour_range">
-                <option value="08h - 12h">08h - 12h</option>
-                <option value="12h - 15h">12h - 15h</option>
-                <option value="15h - 18h">15h - 18h</option>
-                <option value="Après 18h">Après 18h</option>
-                <option value="Week-end">Week-end</option>
-            </select>
-            <input type="text" id="days" placeholder="Jours (Ex: Lun, Mer, Ven)">
+        <div class="payment">
+            <strong>💳 FRAIS D'INSCRIPTION :</strong><br>
+            Paiement par <strong>Orange Money</strong> au : <br>
+            <span style="font-size: 16px; font-weight: bold; color: #d35400;">07 47 49 28 70</span>
         </div>
     </div>
 
